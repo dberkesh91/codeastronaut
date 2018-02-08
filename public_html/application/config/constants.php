@@ -84,5 +84,4 @@ defined('EXIT_DATABASE')       OR define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
-defined('SITE_HOST')             OR define('SITE_HOST', "http://codeastronaut.local");
-defined('ASSETS_DIR')          OR define('ASSETS_DIR', $_SERVER['SERVER_NAME'] . "/assets");
+defined('SITE_HOST')             OR define('SITE_HOST', $_SERVER['SERVER_NAME']);

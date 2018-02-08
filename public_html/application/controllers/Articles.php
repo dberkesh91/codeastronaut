@@ -6,12 +6,14 @@ class articles extends MY_Controller {
   public function __construct(){
     parent::__construct();
 
-    $this->load->model('tag_model', 'tags');
     $this->load->helper('form');
   }
 
   public function index()
   {
+    /* Load relevant models */
+    $this->load->model('blog_model', 'blog');
+    $this->load->model('tag_model', 'tags');
 
     $data['title']           = 'Articles';
     $data['content']         = 'articles';
@@ -22,9 +24,6 @@ class articles extends MY_Controller {
     $this->searchedTags = $this->input->get('searchedTags');
 
     $data['prev_searched'] = $this->searchedTags;
-
-    /* Load relevant model */
-    $this->load->model('blog_model', 'blog');
 
     /* Catch the result of the query that executes within the model */
     $result = $this->blog->get_by_tagName($this->searchedTags);

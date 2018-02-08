@@ -1,6 +1,6 @@
 <?php
 
-$this->load->view('partial/_search', $data);
+$this->load->view('partial/_search');
 
 foreach ($articles as $article)
 {

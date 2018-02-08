@@ -1,29 +1,43 @@
 <?php
-class blog_model extends MY_Model {
+class blog_model extends MY_Model
+{
 
-  public function __construct(){
+  public function __construct()
+  {
     parent::__construct();
   }
 
   public function get_latest_articles()
   {
-    $query = $this->db->query('SELECT * FROM  articles');
+    $sql = "SELECT * FROM articles";
+    $query = $this->db->query($sql);
     $this->results = $query->result();
     return $this->results;
   }
 
   public function get_by_searchTerm($searchTerm)
   {
-    $query = $this->db->query("SELECT title, description, created FROM articles WHERE title LIKE '%{$searchTerm}%'");
+    $sql = "SELECT title, description, created " .
+           "FROM articles " .
+           "WHERE title " .
+           "LIKE '%{$searchTerm}%'";
+
+    $query = $this->db->query($sql);
     $this->results = $query->result();
     return $this->results;
   }
 
   public function get_by_tagName($searchedTags)
   {
-    $searchTagsString = implode($searchedTags);
+    $sql = "SELECT ar.article_id, ar.title, ar.description, ar.created " .
+           "FROM articles AS ar " .
+           "INNER JOIN tags_articles AS ta " .
+              "ON ar.article_id = ta.article_id " .
+           "INNER JOIN tags AS t " .
+              "ON ta.tag_id = t.tag_id " .
+           "WHERE t.tag_name " .
+           "IN('".implode("','", $searchedTags)."')";
 
-    $sql = "SELECT articles.title, articles.description, articles.created FROM articles INNER JOIN tags_articles ON articles.article_id = tags_articles.article_id INNER JOIN tags ON tags_articles.tag_id = tags.tag_id WHERE tags.tag_name IN('".implode("','", $searchedTags)."')";
     $query = $this->db->query($sql);
     $this->results = $query->result();
     return $this->results;
@@ -32,9 +46,17 @@ class blog_model extends MY_Model {
 
   public function get_by_id($id)
   {
-    $sql = "SELECT articles.title, articles.description, articles.created, articles.content, categories.category_name, authors.lastname, authors.firstname FROM articles INNER JOIN categories ON articles.category_id = categories.category_id INNER JOIN authors ON articles.author_id = authors.author_id WHERE articles.article_id = ?";
+    $sql = "SELECT ar.title, ar.description, ar.created, ar.content, c.category_name, au.lastname, au.firstname " .
+           "FROM articles AS ar " .
+           "INNER JOIN categories AS c " .
+              "ON ar.category_id = c.category_id " .
+           "INNER JOIN authors AS au " .
+              "ON ar.author_id = au.author_id " .
+           "WHERE ar.article_id = ?";
+
     $query = $this->db->query($sql, array($id));
-    $this->results = $query->result()[0];
+    $this->results = $query->result();
+
     return $this->results;
   }
 

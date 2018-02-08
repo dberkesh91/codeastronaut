@@ -9,7 +9,7 @@ class MY_Controller extends CI_Controller {
     parent::__construct();
 
     $this->searchFormAttrs = array(
-      'action' => SITE_HOST . '/index.php/articles',
+      'action' => 'http://' . SITE_HOST . '/articles',
       'form' => array(
         'method' => 'get',
         'class' => 'searchForm',
@@ -48,12 +48,8 @@ class MY_Controller extends CI_Controller {
     return $result;
   }
 
+  public function show_error(){
+    show_404("", false);
+  }
+
 }
-
-
-// 'inputFieldAttrs' => array(
-//   'type' => 'text',
-//   'name' => 'searchTerm',
-//   'id'   => 'searchTerm',
-//   'class' => 'searchInput'
-// )
