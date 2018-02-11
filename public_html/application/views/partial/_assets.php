@@ -9,6 +9,6 @@ src="https://code.jquery.com/jquery-3.2.1.min.js"
 integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
 crossorigin="anonymous"></script>
 
+<?php if (ENVIRONMENT == 'development'){ echo '<script type="text/javascript" src="assets/js/debug/debug.js"></script>';} ?>
 <script type="text/javascript" src="assets/js/main.js"></script>
 <script type="text/javascript" src="assets/js/select2.js"></script>
-<script type="text/javascript" src="assets/js/search.js"></script>

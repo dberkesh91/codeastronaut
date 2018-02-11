@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
   var app = {
-    name: 'planetdev',
+    name: 'codeastronaut.local',
     protocol: 'http',
     host: window.location.host,
     messages: {
@@ -11,11 +11,10 @@ $(document).ready(function(){
 
   var form = $('#searchForm');
   var searchDropdown = $('#searchDropdown');
-  var resultBox = $('#searchResult');
-  var mainContent = $('#main-content');
+  var resultBox = $('#search-result');
 
-  searchDropdown3.on("change", function(ev){
-    //ev.preventDefault();
+  searchDropdown.on("change", function(ev){
+    ev.preventDefault();
     //var searchedTag = $(this).find(":selected").last().text();
     var searchedTags = [];
     $(this).find(":selected").each(function(index, searchedTag){
@@ -25,7 +24,7 @@ $(document).ready(function(){
 
     $.ajax({
       type: "get",
-      url: window.location.protocol + '://' + app.host + '/' + app.name + '/index.php/search',
+      url: 'http://codeastronaut.local/articles',
       cache: false,
       data: {searchedTags: searchedTags},
       success: function(result)
@@ -36,8 +35,8 @@ $(document).ready(function(){
         {
           populatePage(result);
         } else {
-          mainContent.empty();
-          mainContent.append(app.messages.searchError);
+          resultBox.empty();
+          resultBox.append(app.messages.searchError);
         }
 
       },
@@ -51,11 +50,11 @@ $(document).ready(function(){
   function populatePage(objects)
   {
     var numOfObjects = objects.length;
-    mainContent.empty();
+    resultBox.empty();
 
     for (var i = 0; i < numOfObjects; i++)
     {
-      mainContent.append
+      resultBox.append
       (
         "<div class='excerpt'>\
           <h1>" + objects[i].title + "</h1>\

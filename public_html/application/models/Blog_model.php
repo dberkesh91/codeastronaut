@@ -29,7 +29,7 @@ class blog_model extends MY_Model
 
   public function get_by_tagName($searchedTags)
   {
-    $sql = "SELECT ar.article_id, ar.title, ar.description, ar.created " .
+    $sql = "SELECT DISTINCT(ar.article_id), ar.title, ar.description, ar.created " .
            "FROM articles AS ar " .
            "INNER JOIN tags_articles AS ta " .
               "ON ar.article_id = ta.article_id " .
