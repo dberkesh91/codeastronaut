@@ -1,7 +1,9 @@
 <?php $this->load->helper('url'); ?>
 
-<link href="assets/css/select2.css" rel="stylesheet"/>
-<link href="assets/css/helper.css" rel="stylesheet"/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="assets/css/select2.css"/>
+<link rel="stylesheet" href="assets/css/app.css"/>
 
 <!-- Jquery library from cdn -->
 <script

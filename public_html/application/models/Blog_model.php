@@ -1,6 +1,8 @@
 <?php
 class blog_model extends MY_Model
 {
+  /* Main table used in queries within this model */
+  private $_tableName = 'articles';
 
   public function __construct()
   {
@@ -9,28 +11,31 @@ class blog_model extends MY_Model
 
   public function get_latest_articles()
   {
-    $sql = "SELECT * FROM articles";
+    $sql = "SELECT * FROM `{$this->_tableName}`";
+
     $query = $this->db->query($sql);
     $this->results = $query->result();
+
     return $this->results;
   }
 
   public function get_by_searchTerm($searchTerm)
   {
     $sql = "SELECT title, description, created " .
-           "FROM articles " .
+           "FROM `{$this->_tableName}` " .
            "WHERE title " .
            "LIKE '%{$searchTerm}%'";
 
     $query = $this->db->query($sql);
     $this->results = $query->result();
+
     return $this->results;
   }
 
   public function get_by_tagName($searchedTags)
   {
     $sql = "SELECT DISTINCT(ar.article_id), ar.title, ar.description, ar.created " .
-           "FROM articles AS ar " .
+           "FROM `{$this->_tableName}` AS ar " .
            "INNER JOIN tags_articles AS ta " .
               "ON ar.article_id = ta.article_id " .
            "INNER JOIN tags AS t " .
@@ -40,6 +45,7 @@ class blog_model extends MY_Model
 
     $query = $this->db->query($sql);
     $this->results = $query->result();
+    
     return $this->results;
 
   }
@@ -47,7 +53,7 @@ class blog_model extends MY_Model
   public function get_by_id($id)
   {
     $sql = "SELECT ar.title, ar.description, ar.created, ar.content, c.category_name, au.lastname, au.firstname " .
-           "FROM articles AS ar " .
+           "FROM `{$this->_tableName}` AS ar " .
            "INNER JOIN categories AS c " .
               "ON ar.category_id = c.category_id " .
            "INNER JOIN authors AS au " .
