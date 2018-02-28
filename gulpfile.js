@@ -7,7 +7,7 @@ const concat = require('gulp-concat');
 
 var config = {
   message: {
-    start: 'Runing defined gulp tasks...',
+    start: 'Running defined gulp tasks...',
     end: 'Finishing up with gulp tasks...'
   }
 }
