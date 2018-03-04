@@ -1,5 +1,1 @@
-$(document).ready(function(){
-
-  $('#searchDropdown').select2();
-
-});
+$(document).ready(function(){$("#searchDropdown").select2()});

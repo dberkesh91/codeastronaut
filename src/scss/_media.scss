@@ -2,14 +2,27 @@ body {
   // tb - top-bottom
   @include linear-gradient-tb($deep-space-main, $night-sky-main);
 
+  font-family: 'Mina';
   margin: 0;
+}
+
+@font-face {
+    font-family: 'Caviar Dreams';
+    src: url('fonts/caviardreams/caviardreams-webfont.eot');
+    src: url('fonts/caviardreams/caviardreams-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/caviardreams/caviardreams-webfont.woff2') format('woff2'),
+         url('fonts/caviardreams/caviardreams-webfont.woff') format('woff'),
+         url('fonts/caviardreams/caviardreams-webfont.ttf') format('truetype'),
+         url('fonts/caviardreams/caviardreams-webfont.svg#caviar_dreamsregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
 }
 
 input:focus,
 select:focus,
 textarea:focus,
 button:focus {
-  outline: 2px solid red;
+  outline: none;
 }
 
 #select2-drop {
@@ -85,12 +98,14 @@ button:focus {
     width: $search-loop-size;
     height: $search-loop-size;
 
-    background-color: transparent;
+    background: url("../../assets/images/icons/search.svg");
     border: none;
     color: #fff;
 
     top: 0;
     right: 0;
+
+    cursor: pointer;
   }
 }
 /* #searchForm */
@@ -106,7 +121,17 @@ button:focus {
 }
 
 .excerpt {
-  color: #afb1b2;
+  color: $text-main;
+  font-size: 15px;
+  padding: 20px;
+
+  h1 {
+    font-size: 24px;
+  }
+
+  p {
+    font-size: 17px;
+  }
 }
 
 .handheld-header {

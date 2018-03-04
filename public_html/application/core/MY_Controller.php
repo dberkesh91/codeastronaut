@@ -8,6 +8,8 @@ class MY_Controller extends CI_Controller {
   {
     parent::__construct();
 
+    /* Should this code run every time any page loads? */
+    /* Probably not! */
     $this->searchFormAttrs = array(
       'action' => 'http://' . SITE_HOST . '/articles',
       'form' => array(
@@ -30,7 +32,8 @@ class MY_Controller extends CI_Controller {
       ),
       'submit' => array(
         'class' => 'searchSubmit',
-        'value' => 'Search',
+        /* Leave value empty when displaying magnifier glass */
+        'value' => '',
         'name' => 'searchSubmit',
         'id' => 'searchSubmit'
       )

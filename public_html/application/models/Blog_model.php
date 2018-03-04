@@ -45,7 +45,7 @@ class blog_model extends MY_Model
 
     $query = $this->db->query($sql);
     $this->results = $query->result();
-    
+
     return $this->results;
 
   }

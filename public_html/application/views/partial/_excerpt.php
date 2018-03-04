@@ -12,7 +12,7 @@
 
     <?php
     /* Convert article `creation` date to `time ago` date */
-    $article->created = mb_strtolower(explode(",", timespan(strtotime($article->created)))[0]);
+    $article->created = strtolower(explode(",", timespan(strtotime($article->created)))[0]);
     /* Convert article `creation` date to `time ago` date */
 
     /* Note: should probably to this somewhere else (model or controller) */
