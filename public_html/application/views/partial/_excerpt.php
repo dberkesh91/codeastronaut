@@ -18,6 +18,13 @@
     /* Note: should probably to this somewhere else (model or controller) */
     ?>
 
-    <span><?= $article->created . ' ago'; ?></span>
+    <span class="launched">
+      <span class="rocket"><img src="assets/images/icons/launched.svg" style="width:25px;height:25px"/></span>
+      <span class="created"><?= 'launched ' . $article->created . ' ago'; ?></span>
+    </span>
+    <span class="author">
+      <img src="assets/images/icons/astronaut.svg" style="width:25px;height:25px"/>
+      <span class="astronaut"><?= $article->firstname . ' ' . $article->lastname; ?></span>
+    </span>
   </div>
 </a>

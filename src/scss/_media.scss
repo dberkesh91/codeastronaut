@@ -98,7 +98,7 @@ button:focus {
     width: $search-loop-size;
     height: $search-loop-size;
 
-    background: url("../../assets/images/icons/search.svg");
+    background: url("../../assets/images/icons/search-mag.svg");
     border: none;
     color: #fff;
 
@@ -131,6 +131,20 @@ button:focus {
 
   p {
     font-size: 17px;
+  }
+
+  img {
+    margin: 0 6px -8px 0;
+  }
+
+  .author {
+    margin: 0 0 0 10px;
+  }
+
+  .rocket {
+    $_rocket-size: 25px;
+    width: $_rocket-size;
+    height: $_rocket-size;
   }
 }
 

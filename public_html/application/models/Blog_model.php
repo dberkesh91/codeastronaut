@@ -11,7 +11,9 @@ class blog_model extends MY_Model
 
   public function get_latest_articles()
   {
-    $sql = "SELECT * FROM `{$this->_tableName}`";
+    $sql = "SELECT * FROM `{$this->_tableName}` AS a " .
+           "INNER JOIN authors AS au " .
+              "ON a.author_id = au.author_id";
 
     $query = $this->db->query($sql);
     $this->results = $query->result();
