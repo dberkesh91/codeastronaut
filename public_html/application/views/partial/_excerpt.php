@@ -8,6 +8,13 @@
 <a href="<?= create_article_link($article) ?>" class="excerpt">
   <div class="excerpt">
     <h1><?= $article->title; ?></h1>
+    <?php
+    foreach ($article->tags as $tag){
+
+      ?><span class="tag"><?= $tag ?></span><?php
+
+    }
+    ?>
     <p><?= $article->description; ?></p>
 
     <?php

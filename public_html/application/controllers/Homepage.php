@@ -17,6 +17,8 @@ class homepage extends MY_Controller {
     $data['content']         = 'home'; // View that loads in the main layout
     $data['searchFormAttrs'] = $this->searchFormAttrs;
     $data['articles']        = $this->blog->get_latest_articles();
+
+    /* Used for populating the select2 search */
     $data['tags']            = $this->tagsToArray($this->tags->get_all_tags());
 
     $this->load->view('main', $data);

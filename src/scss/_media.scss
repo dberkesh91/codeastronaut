@@ -146,6 +146,14 @@ button:focus {
     width: $_rocket-size;
     height: $_rocket-size;
   }
+
+  .tag {
+    padding: 0 4px 0 4px;
+    margin: 0 10px 0 0;
+
+    /* Temporary: experiment with more complementary colors */
+    background: #7F2A68
+  }
 }
 
 .handheld-header {
