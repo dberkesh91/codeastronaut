@@ -36,7 +36,15 @@ button:focus {
 }
 
 #search {
+  position: fixed;
+  width: 100%;
+  height: 100px;
+
   padding: $padding-vast 0 0 0;
+  top: 0;
+  left: 0;
+
+  background: black
 }
 
 /* #searchForm */
@@ -120,7 +128,13 @@ button:focus {
   color: #afb1b2;
 }
 
+.excerpt-container {
+  margin: 180px 0 0 0;
+}
+
 .excerpt {
+  display: block;
+
   color: $text-main;
   font-size: 15px;
   padding: 20px;

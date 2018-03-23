@@ -72,7 +72,19 @@ class blog_model extends MY_Model
            "IN('".implode("','", $searchedTags)."')";
 
     $query = $this->db->query($sql);
-    $this->results = $query->result();
+    $this->results = $query->result_array();
+
+    $this->load->library('Structurizer');
+    $structurizer = new CI_Structurizer
+    (
+      $this->results,
+      'article_id',
+      'tag_name',
+      'tags'
+    );
+
+    $this->results = $structurizer->structure();
+    $this->results = $this->toObject($this->results);
 
     return $this->results;
 

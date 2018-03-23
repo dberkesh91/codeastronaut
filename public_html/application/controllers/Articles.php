@@ -15,11 +15,7 @@ class articles extends MY_Controller {
       $this->load->model('blog_model', 'blog');
 
       /* Catch searched tags from get global */
-      /*
-      Since searchedTags is user input thats being returned back to the views
-      use `urlencode` (in combination with xss clean in codeigniter) to prevent potential xss attacks.
-       */
-      $this->searchedTags = urlencode($this->input->get('searchedTags'));
+      $this->searchedTags = $this->input->get('searchedTags');
 
       if (!$this->searchedTags){
 

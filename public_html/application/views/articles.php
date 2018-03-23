@@ -4,8 +4,7 @@
 $this->load->view('partial/_search');
 ?>
 
-<div id="search-result">
-
+<div class="excerpt-container"></div>
 <?php
 foreach ($articles as $article)
 {
@@ -13,4 +12,3 @@ foreach ($articles as $article)
   $this->load->view('partial/_excerpt', $data);
 }
 ?>
-</div>
